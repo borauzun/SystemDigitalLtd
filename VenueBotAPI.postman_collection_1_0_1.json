@@ -1,0 +1,671 @@
+{
+	"info": {
+		"_postman_id": "6fe6e9fe-532a-4551-bfd7-cdd2ea56d16f",
+		"name": "VenueBot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RestAPI",
+			"item": [
+				{
+					"name": "health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/Auth/health?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"health"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "initiate login by email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "customer-mobile"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\" : \"bora@borauzun.net\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/Auth/initiateLogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"initiateLogin"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						},
+						"description": "When the mobile app initiates login very first time By e-mail"
+					},
+					"response": []
+				},
+				{
+					"name": "initiate login By Phone",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "client_Id",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "x-ip-address",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\" : \"+447856874102\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/Auth/initiateLogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"initiateLogin"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "register user sample 1(full)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "05c9b687-e08c-4bea-91a1-ba61ca506180",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\" : {\n    \"name\" : \"Bora\",\n    \"lastName\" : \"Uzun\",\n    \"knownAs\" : \"Bora\",\n    \"gender\" : \"MALE\",\n    \"email\" : \"bora@borauzun.net\",\n    \"phone\" : \"+447856874102\",\n    \"dobYear\" : 1979,\n    \"dobMonth\" : 3,\n    \"dobDay\" : 6\n  },\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/Auth/registerCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"registerCustomer"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "register user sample 1(minimal-)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "client_Id",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "x-ip-address",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\" : {\n    \"name\" : \"Bora\",\n    \"lastName\" : \"Uzun\",\n    \"knownAs\" : \"Bora\",\n    \"email\" : \"bora@borauzun.net\",\n    \"phone\" : \"+447856874102\",\n    \"dobYear\" : 1979,\n  },\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/Auth/registerCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"registerCustomer"
+							]
+						},
+						"description": "only the mandatory fields"
+					},
+					"response": []
+				},
+				{
+					"name": "AuthRequest(autologin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "d1d9c20a-764e-4bf6-a85e-42150515436f"
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "customer-mobile"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"otp\" : \"*11***\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/Auth/getAuthStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"getAuthStatus"
+							]
+						},
+						"description": "only the mandatory fields"
+					},
+					"response": []
+				},
+				{
+					"name": "AuthRequest(otp)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "d1d9c20a-764e-4bf6-a85e-42150515436f"
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"otp\" : \"112233\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/Auth/getAuthStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"getAuthStatus"
+							]
+						},
+						"description": "only the mandatory fields"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "RestAPI Server",
+			"item": [
+				{
+					"name": "health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.40.135.209:8090/Auth/health?",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"health"
+							],
+							"query": [
+								{
+									"key": " base",
+									"value": "GBP",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is to check if service is up"
+					},
+					"response": []
+				},
+				{
+					"name": "initiate login by email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "customer-mobile"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\" : \"bora@borauzun.net\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/Auth/initiateLogin",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"initiateLogin"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By e-mail"
+					},
+					"response": []
+				},
+				{
+					"name": "initiate login By Phone",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "client_Id",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "x-ip-address",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\" : \"+447856874102\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/Auth/initiateLogin",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"initiateLogin"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "register user sample 1(full)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "05c9b687-e08c-4bea-91a1-ba61ca506180",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\" : {\n    \"name\" : \"Bora\",\n    \"lastName\" : \"Uzun\",\n    \"knownAs\" : \"Bora\",\n    \"gender\" : \"MALE\",\n    \"email\" : \"bora@borauzun.net\",\n    \"phone\" : \"+447856874102\",\n    \"dobYear\" : 1979,\n    \"dobMonth\" : 3,\n    \"dobDay\" : 6\n  },\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/Auth/registerCustomer",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"registerCustomer"
+							]
+						},
+						"description": "When the mobile app initiates login very first time By Phone"
+					},
+					"response": []
+				},
+				{
+					"name": "register user sample 1(minimal-)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "client_Id",
+								"type": "text",
+								"value": ""
+							},
+							{
+								"key": "x-ip-address",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\" : {\n    \"name\" : \"Bora\",\n    \"lastName\" : \"Uzun\",\n    \"knownAs\" : \"Bora\",\n    \"email\" : \"bora@borauzun.net\",\n    \"phone\" : \"+447856874102\",\n    \"dobYear\" : 1979,\n  },\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/Auth/registerCustomer",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"registerCustomer"
+							]
+						},
+						"description": "only the mandatory fields"
+					},
+					"response": []
+				},
+				{
+					"name": "AuthRequest(autologin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "18cda81f-bc14-4605-9e9f-24ac1b8bdc36"
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "customer-mobile"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"otp\" : \"*11***\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/Auth/getAuthStatus",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"getAuthStatus"
+							]
+						},
+						"description": "only the mandatory fields"
+					},
+					"response": []
+				},
+				{
+					"name": "AuthRequest(otp)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "d1d9c20a-764e-4bf6-a85e-42150515436f"
+							},
+							{
+								"key": "audience",
+								"type": "text",
+								"value": "mobile-customer"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"otp\" : \"112233\",\n  \"mac\" : \"a28:89\",\n  \"loginType\" : \"CUSTOMER\",\n  \"loginDevice\" : \"MOBILE\"\n}"
+						},
+						"url": {
+							"raw": "http://45.40.135.209:8090/Auth/getAuthStatus",
+							"protocol": "http",
+							"host": [
+								"45",
+								"40",
+								"135",
+								"209"
+							],
+							"port": "8090",
+							"path": [
+								"Auth",
+								"getAuthStatus"
+							]
+						},
+						"description": "only the mandatory fields"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d9a07e72-5e71-4e11-91d2-5c2e35a408bd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "efb26179-4615-43bc-a9b7-b788e2bbca82",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
